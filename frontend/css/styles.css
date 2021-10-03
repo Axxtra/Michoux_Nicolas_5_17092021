@@ -11278,3 +11278,38 @@ textarea.form-control-lg {
 {
     background-color:wheat;
 }
+
+img
+{
+  width :392px;
+  height :250px;
+}
+
+.lien
+{
+  text-decoration: none;
+  color: #000;
+}
+
+.card-body
+{
+  background-color: #F5F5F5;
+  margin-bottom: 10%;
+  margin-top: -4%;
+}
+
+@media (max-width: 736px) 
+{ 
+  .card-body
+  {
+    margin-top: -10%;
+  }
+}
+
+@media (max-width: 414px) 
+{ 
+  .card-body
+  {
+    margin-top: -13%;
+  }
+}
