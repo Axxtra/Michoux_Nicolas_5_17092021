@@ -11313,3 +11313,15 @@ img
     margin-top: -13%;
   }
 }
+
+.choix_option
+{
+  margin-top: 20px;
+  
+}
+
+.card-body, .card-img-top 
+{
+  border: 3 px solid black;
+  border-radius: 12px 12px 12px 12px;
+}

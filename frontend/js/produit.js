@@ -106,6 +106,7 @@ function renderProducts(data)
     {
         let option_product = document.createElement("option");
         option_product.id = "c_product";
+        option_product.className = "c_product";
         option_product.value = option_couleur[j];
         select.appendChild(option_product);
 
@@ -143,5 +144,64 @@ function renderProducts(data)
     }
     console.log(option_produit);
 
+    //-------------------------------------------------------------local storage---------------------------------------------------------------
+    //stocker les valeurs
+
+    //déclaration d'une variable "productInLocalStorage"
+
+    let productInLocalStorage = JSON.parse(localStorage.getItem("produit"));
+    console.log(productInLocalStorage);
+
+    // création fonction confirmation envoie au panier
+    const popupConfirmation = () => {
+        if(window.confirm(`${data.name} option ${choixForm} a bien été ajouté au panier
+    OK pour accéder au pannier, ANNULER pour revenir en arrière`))
+        {
+            window.location.href ="panier.html";
+        }
+            else
+            {
+                window.location.href ="index.html";
+            }
+        
+    }
+
+    // fonction ajouter un produit sélectionné
+    const ajoutProduitLocalStorage = () =>
+    {
+        productInLocalStorage.push(option_produit);// envoie des données sur le local storage
+        localStorage.setItem("produit",JSON.stringify(productInLocalStorage));// on met les données au format JSON
+        // confirmation de l'envoie au panier
+    }
+
+
+    //---------------------------------------------------vérification du contenu du local storage
+
+        // si il y a des produits dans le local storage
+    if(productInLocalStorage)
+    {   
+        ajoutProduitLocalStorage();// appel fonction ajouter un produit sélectionné
+        popupConfirmation();
+    }            
+
+        // si il n'y a pas de produit dans le local storage on créé un tableau vide pour ensuite y insérer les éléments
+        else
+        {
+            productInLocalStorage = [];
+            ajoutProduitLocalStorage(); // appel fonction ajouter un produit sélectionné
+            console.log(productInLocalStorage); // on affiche dans le console.log() les données pour controler 
+            popupConfirmation();// confirmation de l'envoie au panier
+        
+        }
+    
+
     });
+
+    
+
+
+
+
+
+
 }
