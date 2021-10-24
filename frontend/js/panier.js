@@ -61,7 +61,6 @@ if(productInLocalStorage === null || productInLocalStorage == 0)
     const description = document.getElementsByClassName("lead")[0];
     
     nom.innerHTML = "votre panier est vide";
-    prix.innerHTML = "montant du panier : 0 $";
     
     description.innerHTML = "vous pouvez remplir votre panier ! ";
     img = document.getElementsByClassName('card-img-top')[0];
@@ -159,17 +158,43 @@ for (let l = 0; l < btn_suppr.length; l ++)
     })
 }
 
-//création de la constante pour récupérer le bouton vider le panier
+//-------------------------------------------------------création de la constante pour récupérer le bouton "vider le panier"
 
 const suppr_all = document.querySelector(".btn_suppr_all");
-console.log(suppr_all);
 
-//suppression de tous les éléments produit dans le local storage
-suppr_all.addEventListener("click", (e) => {
+
+//--------------------------------------------------------suppression de tous les éléments produit dans le local storage
+suppr_all.addEventListener("click", (e) => 
+    {
         e.preventDefault;
         localStorage.removeItem("produit");
 
         alert("votre panier est maintenant vide");
 
         window.location.href ="panier.html";
-    });
+    }
+);
+
+//********************************************************************************calcul du total du panier
+
+
+//création de la variable pour insérer les prix des éléments dans le panier
+
+const prix_panier =[];
+
+for (let m =0; m < productInLocalStorage.length; m ++)
+{
+    let prix_produit_localStorage = productInLocalStorage[m].product_price;
+
+    //mettre les prix dans prix_panier
+    prix_panier.push(prix_produit_localStorage);
+}
+
+//additionner les prix avec la méthode reduce
+
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+const total_price = prix_panier.reduce(reducer, 0);
+console.log(total_price);
+
+let prix_total_html = document.querySelector(".total_panier");
+prix_total_html.innerHTML ="Montant du panier : " + total_price + " $";
