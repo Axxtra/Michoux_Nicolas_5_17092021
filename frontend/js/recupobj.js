@@ -1,3 +1,18 @@
+let productInLocalStorage = JSON.parse(localStorage.getItem("produit"));
+
+//création de la constante qui va recevoir la taille du local storage
+
+if (productInLocalStorage === null)
+{
+    const getPanier = document.getElementsByClassName("badge bg-dark text-white ms-1 rounded-pill")[0];
+    getPanier.innerHTML = "0";
+}
+else
+{   
+    const getPanier = document.getElementsByClassName("badge bg-dark text-white ms-1 rounded-pill")[0];
+    getPanier.innerHTML = productInLocalStorage.length;
+}
+
 //création classe permettant de récupérer les produits
 getProducts();
 
@@ -43,7 +58,7 @@ function renderProducts(data)
     card.appendChild(titre);
     
     let price = document.createElement("div");
-    price.className ="fs-5 mb-5";
+    price.className ="fs-5 mb-5 price";
     card.appendChild(price);
     
     let descript = document.createElement("p");
@@ -53,28 +68,7 @@ function renderProducts(data)
     let panier = document.createElement("div");
     panier.className="d-flex";
     card.appendChild(panier);
-    
-    let input = document.createElement("div");
-    input.className ="form-control text-center me-3";
-    input.id="inputQuantity";
-    input.type="num";
-    input.value="1";
-    input.style="max-width: 3rem";
-    panier.appendChild(input);
-    
-    let bouton = document.createElement("button");
-    bouton.className="btn btn-outline-dark flex-shrink-0";
-    bouton.id="envoie_panier";
-    bouton.type="submit";
-    bouton.textContent = "Ajouter au panier";
-    panier.appendChild(bouton);
-    
-    const nom = document.getElementsByClassName('fw-bolder')[i];
-    const prix = document.getElementsByClassName("fs-5 mb-5")[i];
-    const description = document.getElementsByClassName("lead")[i];
-    let id =document.getElementsByClassName("lead")[i];
-    
-    
+        
     titre.innerHTML = data[i].name;
     price.innerHTML = data[i].price + "$";
     descript.innerHTML = "description : " + data[i].description;
@@ -84,5 +78,6 @@ function renderProducts(data)
 }
 
  
+
 
 

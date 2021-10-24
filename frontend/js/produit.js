@@ -1,3 +1,19 @@
+let productInLocalStorage = JSON.parse(localStorage.getItem("produit"));
+
+//création de la constante qui va recevoir la taille du local storage
+
+if (productInLocalStorage === null)
+{
+    const getPanier = document.getElementsByClassName("badge bg-dark text-white ms-1 rounded-pill")[0];
+    getPanier.innerHTML = "0";
+}
+else
+{   
+    const getPanier = document.getElementsByClassName("badge bg-dark text-white ms-1 rounded-pill")[0];
+    getPanier.innerHTML = productInLocalStorage.length;
+}
+
+
 const queryString_url_id = window.location.search;
 console.log(queryString_url_id);
 
@@ -52,22 +68,12 @@ function renderProducts(data)
     descript.className ="lead";
     card.appendChild(descript);
 
-
-
     let panier = document.createElement("div");
     panier.className="d-flex";
     card.appendChild(panier);
 
-    let input = document.createElement("div");
-    input.className ="form-control text-center me-3";
-    input.id="inputQuantity";
-    input.type="num";
-    input.value="1";
-    input.style="max-width: 3rem";
-    panier.appendChild(input);
-
     let bouton = document.createElement("button");
-    bouton.className="btn btn-outline-dark flex-shrink-0";
+    bouton.className="btn btn-outline-dark flex-shrink-0 btn-warning";
     bouton.type="submit";
     bouton.id="order";
     bouton.name="Commander";
@@ -196,12 +202,5 @@ function renderProducts(data)
     
 
     });
-
-    
-
-
-
-
-
 
 }

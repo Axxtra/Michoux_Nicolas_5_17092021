@@ -11325,3 +11325,20 @@ img
   border: 3 px solid black;
   border-radius: 12px 12px 12px 12px;
 }
+
+h2
+{
+  text-align: center;
+}
+
+.couleur_produit
+{
+  margin-left: 5%;
+}
+
+.suppr_all
+{
+  margin-bottom: 5%;
+  margin-left: 45%;
+  
+}
