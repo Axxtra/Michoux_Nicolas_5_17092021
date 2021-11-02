@@ -47,6 +47,7 @@ exports.getOneTeddy = (req, res, next) => {
  *
  */
 exports.orderTeddies = (req, res, next) => {
+  
   if (!req.body.contact ||
     !req.body.contact.firstName ||
     !req.body.contact.lastName ||
@@ -56,6 +57,7 @@ exports.orderTeddies = (req, res, next) => {
     !req.body.products) {
     return res.status(400).send(new Error('Bad request!'));
   }
+  
   let queries = [];
   for (let productId of req.body.products) {
     const queryPromise = new Promise((resolve, reject) => {
