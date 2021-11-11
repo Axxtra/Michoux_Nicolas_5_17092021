@@ -4,20 +4,16 @@ let productInLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
 //création de la constante qui va recevoir la taille du local storage
 
-if (productInLocalStorage === null)
+if (productInLocalStorage === null )
 {
-    const getPanier = document.getElementsByClassName("badge bg-dark text-white ms-1 rounded-pill")[0];
+    const getPanier = document.getElementById("nb_panier");
     getPanier.innerHTML = "0";
 }
 else
 {   
-    const getPanier = document.getElementsByClassName("badge bg-dark text-white ms-1 rounded-pill")[0];
+    const getPanier = document.getElementById("nb_panier");
     getPanier.innerHTML = productInLocalStorage.length;
 }
-
-
-
-
 
 
 // si le panier est vide
@@ -324,7 +320,14 @@ btnSendForm.addEventListener("click", (e) =>
         alert("Merci de remplir tout les champs du formulaire");
     }
 
-    let products = productInLocalStorage;
+    
+
+    const products =[];
+    for (let z =0; z < productInLocalStorage.length; z ++)
+    {
+        let id_list = productInLocalStorage[z].product_id;
+        products.push(id_list);
+    }
 
     let ToSend =
     {
@@ -351,15 +354,18 @@ btnSendForm.addEventListener("click", (e) =>
         {
             console.log(response)
             const content = await response.json();
-            console.log(content);
+            
+            console.log(content)
+            console.log(id_order);
         }
         catch(e)
         {
             console.log(e);
+           
         }
     })
     // pour voir ce qu il y a dans le serveur
-    
-
+    let id_order = content.orderId;
+    console.log(id_order);
 })
 

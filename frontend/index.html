@@ -37,7 +37,7 @@
                             <button class="btn btn-outline-dark">
                                 <i class="bi-cart-fill me-1"></i>
                                 panier
-                                <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                                <span class="badge bg-dark text-white ms-1 rounded-pill" id="nombre_panier"></span>
                             </button>
                     </form>
                 </div>
@@ -45,9 +45,24 @@
         </nav>
         <!-- Product section-->
         <section class="py-5">
+
+            <template id="template">
+                <div class="col-md-4 col-lg-4">
+                    <a class="lien" href="">
+                        <img class="card-img-top mb-5 mb-md-0" src="" alt="">
+                    </a>
+                    <div class="card-body">
+                        <div class="small mb-1"></div>
+                        <h2 class="card-title fw-bolder">nom</h2>
+                        <div class="fs-5 mb-5 price">0</div>
+                        <p class="lead">description</p>
+                        <div class="d-flex"></div>
+                    </div>
+                </div>
+            </template>
+
             <div class="container px-4 px-lg-5my-5">
-                <div class="row gx-4 gx-lg-5">
-                    
+                <div id="products-render" class="row gx-4 gx-lg-5">    
                 </div>
             </div>
         </section>
